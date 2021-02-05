@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import './screens/PlantIndex'
+import PlantIndex from "./screens/PlantIndex";
 
 const fetch = require('node-fetch');
 
@@ -39,7 +41,7 @@ function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Details" component={DetailsScreen} />
+          <Stack.Screen name="Plants" component={PlantIndex} />
         </Stack.Navigator>
       </NavigationContainer>
   );
