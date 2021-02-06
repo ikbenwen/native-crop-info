@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 import axios from 'axios';
+import PlantListItem from "../components/PlantListItem";
 
 
 // const fetch = require('node-fetch');
@@ -14,7 +15,6 @@ import axios from 'axios';
 
 
 export default function PlantIndex () {
-
 
     const [plants, setPlants] = useState([])
 
@@ -32,18 +32,28 @@ export default function PlantIndex () {
         getPlants()
     }, [''])
 
+
+
     return(
         <View>
-            <Text>Plant Index</Text>
 
-
-            <FlatList data={plants}
-                      renderItem={({item}) => {
-                          return <Text>{item.common_name}</Text>;
-                      }}
-                      keyExtractor={(item) => item.id}>
-
-            </FlatList>
+            <FlatList
+                data={plants}
+                renderItem={({item}) => {
+                    return <PlantListItem item={item} />;
+                }}
+                keyExtractor={(item) => item.slug}
+                ItemSeparatorComponent={() => {
+                    return <View style={styles.itemSeparator} />
+                }}
+            />
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    itemSeparator: {
+        borderBottomColor: 'green',
+        borderWidth: 1
+    }
+})
