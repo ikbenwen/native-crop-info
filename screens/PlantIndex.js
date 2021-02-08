@@ -14,7 +14,7 @@ import PlantListItem from "../components/PlantListItem";
 //
 
 
-export default function PlantIndex () {
+export default function PlantIndex ({ navigation }) {
 
     const [plants, setPlants] = useState([])
 
@@ -32,7 +32,9 @@ export default function PlantIndex () {
         getPlants()
     }, [''])
 
-
+function goToPlant (id) {
+navigation.navigate("PlantDetails",{ id: id })
+};
 
     return(
         <View>
@@ -40,7 +42,7 @@ export default function PlantIndex () {
             <FlatList
                 data={plants}
                 renderItem={({item}) => {
-                    return <PlantListItem item={item} />;
+                    return <PlantListItem item={item} onPress={() => goToPlant(item.slug)}/>;
                 }}
                 keyExtractor={(item) => item.slug}
                 ItemSeparatorComponent={() => {

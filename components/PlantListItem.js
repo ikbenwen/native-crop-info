@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, Image, ImageBackground, Pressable } from "react-native";
 
-export default function PlantListItem({item}) {
+export default function PlantListItem({item, onPress}) {
     return (
 
-        <View style={styles.listItem}>
+        <Pressable style={styles.listItem} onPress={onPress}>
+
         <Text style={styles.title}>
             {item?.common_name}
         </Text>
@@ -14,19 +15,24 @@ export default function PlantListItem({item}) {
             <Text style={styles.scientific}>
                 {item?.scientific_name}
             </Text>
-            <ImageBackground source={{ url: item?.image_url }} alt={item?.common_name} style={{ width: 100, height: 100 }} />
-    </View>
+            <ImageBackground source={{ url: item?.image_url }} alt={item?.common_name} style={styles.image} />
+
+    </Pressable>
     );
 }
 
 
 const styles = StyleSheet.create({
     listItem: {
+        margin: 10,
         backgroundColor: 'white',
         width: '100%',
-        padding: 10,
+        padding: 20,
+        flexDirection: 'column',
+        alignItems: 'flex-end',
     },
     title: {
+        margin: 10,
         fontSize: 22,
     },
     subtitle: {
@@ -38,6 +44,9 @@ const styles = StyleSheet.create({
         color: 'lightgrey'
     },
     image: {
-        position: 'absolute'
+        width: 200,
+        height: 200,
+        alignSelf: 'flex-start',
+        justifyContent: 'center'
     }
 })

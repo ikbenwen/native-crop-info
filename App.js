@@ -4,6 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import './screens/PlantIndex'
 import PlantIndex from "./screens/PlantIndex";
+import PlantSearch from "./screens/PlantSearch";
+import PlantDetails from "./screens/PlantDetails"
+
 
 const fetch = require('node-fetch');
 
@@ -20,7 +23,7 @@ const fetch = require('node-fetch');
 //         <Text>Home Screen</Text>
 //         <Button
 //             title="Go to Details"
-//             onPress={() => navigation.navigate('Details')}
+//             onPress={() => navigation.navigate('PlantIndex')}
 //         />
 //       </View>
 //   );
@@ -41,7 +44,9 @@ function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
           {/*<Stack.Screen name="Home" component={HomeScreen} />*/}
+          {/*<Stack.Screen name="Search" component={PlantSearch} />*/}
           <Stack.Screen name="Plants" component={PlantIndex} />
+            <Stack.Screen name="PlantDetails" component={PlantDetails} />
         </Stack.Navigator>
       </NavigationContainer>
   );
