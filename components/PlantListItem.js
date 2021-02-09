@@ -24,20 +24,25 @@ export default function PlantListItem({item, onPress}) {
 
 const styles = StyleSheet.create({
     listItem: {
-        margin: 10,
-        backgroundColor: 'white',
+        margin: 0,
+        backgroundColor: '#315C2B',
         width: '100%',
-        padding: 20,
-        flexDirection: 'column',
-        alignItems: 'flex-end',
+        padding: 0,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+
     },
     title: {
-        margin: 10,
+        margin: 0,
         fontSize: 22,
+        fontWeight:'bold',
+        color: 'white' ,
+        // backgroundColor: '#B7245C',
     },
     subtitle: {
         fontSize: 18,
-        color: 'green',
+        color: '#EDCBB1',
     },
     scientific: {
         fontSize: 15,
@@ -46,7 +51,9 @@ const styles = StyleSheet.create({
     image: {
         width: 200,
         height: 200,
-        alignSelf: 'flex-start',
-        justifyContent: 'center'
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 5
     }
 })

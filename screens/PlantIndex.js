@@ -3,6 +3,8 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 import axios from 'axios';
 import PlantListItem from "../components/PlantListItem";
 
+const token = 'BC09Zl9KrfbB6rTcw_kq-YBdKRpfjYITLdotI3wrZNc';
+
 
 // const fetch = require('node-fetch');
 //
@@ -21,10 +23,10 @@ export default function PlantIndex ({ navigation }) {
     useEffect(() => {
         async function getPlants(){
             try {
-                const {data: {data}} = await axios.get('https://trefle.io/api/v1/plants?filter_not%5Bedible_part%5D=null&token=BC09Zl9KrfbB6rTcw_kq-YBdKRpfjYITLdotI3wrZNc');
+                const {data: {data}} = await axios.get(`https://trefle.io/api/v1/plants?filter_not%5Bedible_part%5D=null&token=${token}`);
 
                setPlants(data);
-                console.log(data)
+                // console.log(data)
             } catch (e) {
                 console.log(e)
             }
@@ -37,6 +39,7 @@ navigation.navigate("PlantDetails",{ id: id })
 };
 
     return(
+
         <View>
 
             <FlatList
@@ -56,6 +59,7 @@ navigation.navigate("PlantDetails",{ id: id })
 const styles = StyleSheet.create({
     itemSeparator: {
         borderBottomColor: 'green',
-        borderWidth: 1
+        borderWidth: 1,
+
     }
 })
