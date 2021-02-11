@@ -23,7 +23,7 @@ export default function PlantIndex ({ navigation }) {
     useEffect(() => {
         async function getPlants(){
             try {
-                const {data: {data}} = await axios.get(`https://trefle.io/api/v1/plants?filter_not%5Bedible_part%5D=null&token=${token}`);
+                const {data: {data}} = await axios.get(`https://trefle.io/api/v1/species?filter_not%5Bedible_part%5D=null&token=${token}&page=2`);
 
                setPlants(data);
                 // console.log(data)

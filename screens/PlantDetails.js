@@ -1,34 +1,39 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import axios from "axios";
+import {Link} from "@react-navigation/native";
 
 const token = 'BC09Zl9KrfbB6rTcw_kq-YBdKRpfjYITLdotI3wrZNc';
 
 
 export default function PlantDetails (props) {
-    const [plant, setPlant] = useState([{}])
+    const [plant, setPlant] = useState({})
 
     useEffect(() => {
         async function getPlant(){
             try {
                 const {
-                    data,
-                } = await axios.get(`https://trefle.io/api/v1/plants/search?token=${token}&q=${props.route.params.id}&limit=1`);
+                data,
+                } = await axios.get(`https://trefle.io/api/v1/species/search?token=${token}&q=${props.route.params.id}&limit=1`);
 
                 console.log(data)
-                setPlant(data)
+                // console.log(data)
+                setPlant(data.data[0])
             } catch (e) {
                 console.log(e)
             }
         }
         getPlant();
-    },['']);
+    },[]);
+
 
 
     return (
     <View style={styles.appContainer}>
-       <Text>{props.route.params.id}</Text>
-        <Text>{plant.family}</Text>
+        <Text>The {plant.slug} also known as {plant.common_name} is a species of the {plant.family_common_name} </Text>
+        <Text>Synonyms for this plant are: {plant?.synonyms[0]} and {plant?.synonyms[1]}</Text>
+
+
         <ImageBackground source={{ url: plant?.image_url }} alt={plant.common_name} style={styles.image} />
     </View>
     );
