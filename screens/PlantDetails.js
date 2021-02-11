@@ -31,7 +31,7 @@ export default function PlantDetails (props) {
     return (
     <View style={styles.appContainer}>
         <Text>The {plant.slug} also known as {plant.common_name} is a species of the {plant.family_common_name} </Text>
-        <Text>Synonyms for this plant are: {plant?.synonyms[0]} and {plant?.synonyms[1]}</Text>
+        {/*<Text style={styles.subtitle}>Synonyms for this plant are: {plant?.synonyms[0]} and {plant?.synonyms[1]}</Text>*/}
 
 
         <ImageBackground source={{ url: plant?.image_url }} alt={plant.common_name} style={styles.image} />
@@ -44,24 +44,6 @@ const styles = StyleSheet.create ({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    listItem: {
-        margin: 0,
-        backgroundColor: 'white',
-        width: '100%',
-        padding: 0,
-    },
-    title: {
-        margin: 0,
-        fontSize: 22,
-    },
-    subtitle: {
-        fontSize: 18,
-        color: 'green',
-    },
-    scientific: {
-        fontSize: 15,
-        color: 'lightgrey',
     },
     image: {
         width: 200,
