@@ -23,10 +23,13 @@ export default function PlantIndex ({ navigation }) {
     useEffect(() => {
         async function getPlants(){
             try {
-                const {data: {data}} = await axios.get(`https://trefle.io/api/v1/species?filter_not%5Bedible_part%5D=null&token=${token}&page=2`);
+               const {data: {data}} = await axios.get(`https://trefle.io/api/v1/species?filter_not%5Bedible_part%5D=null&token=${token}&page=2`);
+                // const {data: {data}} = await axios.get(`https://trefle.io/api/v1/species?token=${token}&filter[common_name]=garden%20tomato`);
+
+
 
                setPlants(data);
-                // console.log(data)
+                // console.log(data[0].grow)
             } catch (e) {
                 console.log(e)
             }
